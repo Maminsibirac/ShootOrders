@@ -2,6 +2,8 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xmlns:util="http://www.springframework.org/schema/util"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:tx="http://www.springframework.org/schema/tx"
        xsi:schemaLocation="http://www.springframework.org/schema/beans
 	http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
 	http://www.springframework.org/schema/util
@@ -11,11 +13,12 @@
         <property name="bookingService" ref="bookingService" />
     </bean>
 
-    <bean id="bookingService" class="com.sevenbits.service.BookingService">
+    <bean id="bookingService" class="com.sevenbits.service.booking.BookingService">
         <property name="validator" ref="validator" />
     </bean>
 
     <bean id="validator" class="com.sevenbits.validator.Validator" />
+    <bean id="contact" class="com.sevenbits.domain.Contact" />
 
     <util:map id="fieldsMap" map-class="java.util.HashMap"
               key-type="java.lang.String" value-type="java.lang.String">
@@ -28,5 +31,4 @@
     <bean id="emailPattern" class="java.util.regex.Pattern" factory-method="compile">
         <constructor-arg value="^[_A-Za-z0-9-\+]+(\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\.[A-Za-z0-9]+)*(\.[A-Za-z]{2,})$"/>
     </bean>
-
 </beans>

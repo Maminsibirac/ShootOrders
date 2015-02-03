@@ -7,6 +7,7 @@
 <script type="text/javascript" src="/sb/resources/javascript/removeErrorMessage.js"></script>
 <script type="text/javascript" src="/sb/resources/javascript/setTimeoutMessage.js"></script>
 
+
 <link rel="stylesheet" href="/sb/resources/css/my_styles.css" type="text/css">
 
 
@@ -94,7 +95,7 @@
 
         <div class="ground">
             <div class="edit-form">
-  	            <form action="protected" method="post">
+  	            <form id="userForm" action="protected" method="post">
 				    <div class="form-text">
 					    <div class="name">Имя<span>*</span></div>
 			  				<p class="indent" class="surname">Фамилия<span>*</span></p>

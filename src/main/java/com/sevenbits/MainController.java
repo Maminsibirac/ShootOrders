@@ -1,9 +1,11 @@
 package com.sevenbits;
 
-import com.sevenbits.service.BookingService;
+import com.sevenbits.service.booking.BookingService;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.ModelAndView;
+
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -26,11 +28,10 @@ public class MainController {
         return "index";
     }
 
-    @RequestMapping(value = "/protected" ,method = RequestMethod.POST)
+    @RequestMapping(value = "/protected",method = RequestMethod.POST)
     public void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, java.io.IOException {
         parameters = request.getParameterMap();
-
         bookingService.doWork(parameters, request.getParameter("rad"), request.getParameter("our"));
 
         fields = bookingService.getFields();
@@ -40,6 +41,7 @@ public class MainController {
         request.getSession().setAttribute("condition", conditions);
 
         request.getRequestDispatcher("/WEB-INF/views/index.jsp").forward(request, response);
+
     }
 }
 
