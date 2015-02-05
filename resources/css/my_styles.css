@@ -120,7 +120,7 @@ main {
 }
 
 .background {
-	background-image:  	 url(../images/background/mount.png);
+	background-image:  	 url(http://localhost/background/mount.png);
     background-repeat:	 no-repeat;
 	background-position: 14px 140px;
 	height: 			 546px;
@@ -265,7 +265,7 @@ main {
 
 /*Main Article*/
 article {
-	background-image: url(../images/background/background_dark.png);
+	background-image: url(http://localhost/background/background_dark.png);
 	height: 		  120px;
 	width: 			  1152px;
 }
@@ -314,7 +314,8 @@ article .send-successful {
 }
 
 .incorrect-input {
-	color: 		 #fda815;
+	color:       #fda815;
+	display: none;
 	margin-left: 5px;
 }
 
@@ -373,6 +374,7 @@ article .send-successful {
 .form-action-1
 .incorrect-radio {
 	color: 	   #fda815;
+	display: none;
 	font-size: 18;
 	margin:    0 0 0 256px;
 }
@@ -418,7 +420,7 @@ article .send-successful {
 /*Footer*/
 footer {
 	background-color: 	 #1b252e;
-	background-image:    url(../images/background/mount_footer.png);
+	background-image:    url(http://localhost/background/mount_footer.png);
 	background-position: bottom left;
 	background-repeat: 	 no-repeat;
 	height: 			 320px;
@@ -430,7 +432,7 @@ footer {
 	width: 			  335px;
 	height: 		  296px;
 	margin: 		  -55px 0 280px 790px;
-	background-image: url(../images/pictures/snowboard_footer.png);
+	background-image: url(http://localhost/pictures/snowboard_footer.png);
 }
 
 .text-contact {

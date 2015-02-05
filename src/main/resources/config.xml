@@ -9,6 +9,7 @@
 	http://www.springframework.org/schema/util
 	http://www.springframework.org/schema/util/spring-util-2.5.xsd">
 
+
     <bean id="mainController" class="com.sevenbits.MainController">
         <property name="bookingService" ref="bookingService" />
     </bean>
@@ -19,10 +20,6 @@
 
     <bean id="validator" class="com.sevenbits.validator.Validator" />
     <bean id="contact" class="com.sevenbits.domain.Contact" />
-
-    <util:map id="fieldsMap" map-class="java.util.HashMap"
-              key-type="java.lang.String" value-type="java.lang.String">
-    </util:map>
 
     <util:map id="conditionsMap" map-class="java.util.HashMap"
               key-type="java.lang.String" value-type="java.lang.Boolean">

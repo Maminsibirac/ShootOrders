@@ -11,18 +11,14 @@ import java.util.regex.Pattern;
 
 
 public class Validator {
-    @Resource(name = "fieldsMap")
-    private Map<String, String> fields;
     @Resource(name = "conditionsMap")
     private Map<String, Boolean> conditions;
     @Autowired
     private Pattern pattern;
-    private Matcher matcher;
-
-    private static final Logger logger = Logger.getLogger(Validator.class);
 
     public boolean isEmailValid(String mail) {
-        matcher = pattern.matcher(mail);
+        Matcher matcher = pattern.matcher(mail);
+
         return matcher.matches();
     }
 
@@ -30,6 +26,7 @@ public class Validator {
         if(name.isEmpty()) {
             return false;
         }
+
         return true;
     }
 
@@ -37,6 +34,15 @@ public class Validator {
         if(surname.isEmpty()) {
             return false;
         }
+
+        return true;
+    }
+
+    public boolean isServiceValid(String checkRadio) {
+        if(checkRadio == null) {
+            return false;
+        }
+
         return true;
     }
 
@@ -44,6 +50,7 @@ public class Validator {
         boolean isName = isNameValid(parameters.get("first")[0]);
         boolean isSurname = isSurnameValid(parameters.get("last")[0]);
         boolean isMail = isEmailValid(parameters.get("email")[0]);
+        boolean isService = isServiceValid(radio);
 
         boolean isSuccess = (isName && isSurname && isMail && radio != null);
 
@@ -51,41 +58,8 @@ public class Validator {
         conditions.put("first", isName);
         conditions.put("last", isSurname);
         conditions.put("email", isMail);
+        conditions.put("service", isService);
 
         return conditions;
-    }
-
-    public void startField(Map<String, String> fields) {
-        fields.put("name", "");
-        fields.put("surname", "");
-        fields.put("mail", "");
-        fields.put("comments", "");
-        fields.put("radio", "photo");
-        fields.put("check", "on");
-    }
-
-    public Map<String, String> validFields(Map<String, String[]> parameters, String radio, String checkbox) {
-        fields.put("name", parameters.get("first")[0]);
-        fields.put("surname", parameters.get("last")[0]);
-        fields.put("mail", parameters.get("email")[0]);
-        fields.put("comments", parameters.get("comments")[0]);
-
-        if(radio != null && radio.equals("photo")) {
-            fields.put("radio", "photo");
-        }
-        else if(radio != null && radio.equals("video")){
-            fields.put("radio", "video");
-        } else {
-            fields.put("radio", "fail");
-        }
-
-        if(checkbox != null && checkbox.equals("on")) {
-            fields.put("check", "on");
-        }
-        else {
-            fields.put("check", "off");
-        }
-
-        return fields;
     }
 }

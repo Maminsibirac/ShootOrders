@@ -19,8 +19,6 @@ public class BookingService {
 
     private Validator validator;
 
-
-
     public void setValidator(Validator validator) {
         this.validator = validator;
     }
@@ -44,7 +42,6 @@ public class BookingService {
 
     public void doWork(Map<String, String[]> parameters, String radio, String checkbox) {
         conditions = validator.validConditions(parameters, radio);
-        fields = validator.validFields(parameters, radio, checkbox);
 
         if (conditions.get("success")) {
             if (!repeatRegistration(parameters.get("email")[0])) {
@@ -57,10 +54,6 @@ public class BookingService {
             }
         } else {
             conditions.put("repeatRegistered", false);
-        }
-
-        if(conditions.get("success") && !conditions.get("repeatRegistered")) {
-            validator.startField(fields);
         }
     }
 }
